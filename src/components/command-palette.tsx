@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useMemo, useRef } from "react";
 import { useRouter } from "next/navigation";
 import {
   LayoutDashboard,
@@ -19,68 +19,85 @@ import {
 interface CommandItem {
   label: string;
   icon: React.ComponentType<{ className?: string }>;
-  action: () => void;
+  href: string;
   category: string;
 }
+
+const items: CommandItem[] = [
+  { label: "Dashboard", icon: LayoutDashboard, href: "/", category: "Navigation" },
+  { label: "Clients", icon: Users, href: "/clients", category: "Navigation" },
+  { label: "Leads", icon: Target, href: "/leads", category: "Navigation" },
+  { label: "Projets", icon: FolderKanban, href: "/projects", category: "Navigation" },
+  { label: "Tâches", icon: CheckSquare, href: "/tasks", category: "Navigation" },
+  { label: "Calendrier", icon: Calendar, href: "/calendar", category: "Navigation" },
+  { label: "Finances", icon: Wallet, href: "/finances", category: "Navigation" },
+  { label: "Journal", icon: BookOpen, href: "/daily", category: "Navigation" },
+  { label: "Settings", icon: Settings, href: "/settings", category: "Navigation" },
+  { label: "Nouveau client", icon: Plus, href: "/clients?new=true", category: "Actions" },
+  { label: "Nouvelle tâche", icon: Plus, href: "/tasks?new=true", category: "Actions" },
+  { label: "Nouveau lead", icon: Plus, href: "/leads?new=true", category: "Actions" },
+  { label: "Nouveau projet", icon: Plus, href: "/projects?new=true", category: "Actions" },
+];
 
 export function CommandPalette() {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
   const router = useRouter();
+  const selectedRef = useRef(selectedIndex);
+  const searchRef = useRef(search);
 
-  const items: CommandItem[] = [
-    { label: "Dashboard", icon: LayoutDashboard, action: () => router.push("/"), category: "Navigation" },
-    { label: "Clients", icon: Users, action: () => router.push("/clients"), category: "Navigation" },
-    { label: "Leads", icon: Target, action: () => router.push("/leads"), category: "Navigation" },
-    { label: "Projets", icon: FolderKanban, action: () => router.push("/projects"), category: "Navigation" },
-    { label: "Tâches", icon: CheckSquare, action: () => router.push("/tasks"), category: "Navigation" },
-    { label: "Calendrier", icon: Calendar, action: () => router.push("/calendar"), category: "Navigation" },
-    { label: "Finances", icon: Wallet, action: () => router.push("/finances"), category: "Navigation" },
-    { label: "Journal", icon: BookOpen, action: () => router.push("/daily"), category: "Navigation" },
-    { label: "Settings", icon: Settings, action: () => router.push("/settings"), category: "Navigation" },
-    { label: "Nouveau client", icon: Plus, action: () => router.push("/clients?new=true"), category: "Actions" },
-    { label: "Nouvelle tâche", icon: Plus, action: () => router.push("/tasks?new=true"), category: "Actions" },
-    { label: "Nouveau lead", icon: Plus, action: () => router.push("/leads?new=true"), category: "Actions" },
-    { label: "Nouveau projet", icon: Plus, action: () => router.push("/projects?new=true"), category: "Actions" },
-  ];
+  selectedRef.current = selectedIndex;
+  searchRef.current = search;
 
-  const filtered = items.filter((item) =>
-    item.label.toLowerCase().includes(search.toLowerCase())
+  const filtered = useMemo(
+    () => items.filter((item) => item.label.toLowerCase().includes(search.toLowerCase())),
+    [search]
+  );
+  const filteredRef = useRef(filtered);
+  filteredRef.current = filtered;
+
+  const navigate = useCallback(
+    (href: string) => {
+      router.push(href);
+      setOpen(false);
+    },
+    [router]
   );
 
-  const handleKeyDown = useCallback(
-    (e: KeyboardEvent) => {
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
         e.preventDefault();
         setOpen((o) => !o);
         setSearch("");
         setSelectedIndex(0);
       }
-      if (!open) return;
-      if (e.key === "Escape") {
-        setOpen(false);
-      }
-      if (e.key === "ArrowDown") {
-        e.preventDefault();
-        setSelectedIndex((i) => (i + 1) % filtered.length);
-      }
-      if (e.key === "ArrowUp") {
-        e.preventDefault();
-        setSelectedIndex((i) => (i - 1 + filtered.length) % filtered.length);
-      }
-      if (e.key === "Enter" && filtered[selectedIndex]) {
-        filtered[selectedIndex].action();
-        setOpen(false);
-      }
-    },
-    [open, filtered, selectedIndex]
-  );
-
-  useEffect(() => {
+    }
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [handleKeyDown]);
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    function handleKeyDown(e: KeyboardEvent) {
+      const f = filteredRef.current;
+      if (e.key === "Escape") {
+        setOpen(false);
+      } else if (e.key === "ArrowDown") {
+        e.preventDefault();
+        setSelectedIndex((i) => (i + 1) % f.length);
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        setSelectedIndex((i) => (i - 1 + f.length) % f.length);
+      } else if (e.key === "Enter") {
+        const item = f[selectedRef.current];
+        if (item) navigate(item.href);
+      }
+    }
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [open, navigate]);
 
   if (!open) return null;
 
@@ -118,10 +135,7 @@ export function CommandPalette() {
                   return (
                     <button
                       key={item.label}
-                      onClick={() => {
-                        item.action();
-                        setOpen(false);
-                      }}
+                      onClick={() => navigate(item.href)}
                       onMouseEnter={() => setSelectedIndex(globalIndex)}
                       className={`flex items-center gap-3 w-full px-3 py-2 rounded-lg text-sm transition-colors ${
                         globalIndex === selectedIndex ? "bg-muted text-foreground" : "text-muted-foreground hover:text-foreground"

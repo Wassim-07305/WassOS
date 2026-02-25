@@ -218,9 +218,7 @@ export function TasksView({ tasks, projects }: { tasks: Task[]; projects: Projec
                               <p className="text-sm font-medium flex-1">{task.title}</p>
                               {sourceIcon(task.source)}
                             </div>
-                            {getProjectName(task.projectId) && (
-                              <p className="text-[10px] text-muted-foreground">{getProjectName(task.projectId)}</p>
-                            )}
+                            {(() => { const pn = getProjectName(task.projectId); return pn ? <p className="text-[10px] text-muted-foreground">{pn}</p> : null; })()}
                             <div className="flex items-center gap-1.5 flex-wrap">
                               <Badge variant="secondary" className={`text-[9px] ${categoryColor(task.category)}`}>{task.category}</Badge>
                               <Badge variant="secondary" className={`text-[9px] ${priorityColor(task.priority)}`}>{task.priority}</Badge>

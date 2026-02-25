@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { supabase } from "./supabase";
 import type {
   Client,
@@ -134,14 +135,14 @@ function mapDailyLog(row: Row): DailyLog {
 
 // === Clients ===
 
-export async function getClients(): Promise<Client[]> {
+export const getClients = cache(async (): Promise<Client[]> => {
   const { data, error } = await supabase
     .from("clients")
     .select("*")
     .order("created_at", { ascending: false });
   if (error) throw error;
   return (data || []).map(mapClient);
-}
+});
 
 export async function getClient(id: string): Promise<Client | undefined> {
   const { data, error } = await supabase
@@ -201,17 +202,13 @@ export async function deleteClient(id: string): Promise<void> {
 
 // === Projects ===
 
-export async function getProjects(): Promise<Project[]> {
-  const { data: projectRows, error: pErr } = await supabase
-    .from("projects")
-    .select("*")
-    .order("created_at", { ascending: false });
+export const getProjects = cache(async (): Promise<Project[]> => {
+  const [{ data: projectRows, error: pErr }, { data: phaseRows, error: phErr }] =
+    await Promise.all([
+      supabase.from("projects").select("*").order("created_at", { ascending: false }),
+      supabase.from("project_phases").select("*").order("sort_order", { ascending: true }),
+    ]);
   if (pErr) throw pErr;
-
-  const { data: phaseRows, error: phErr } = await supabase
-    .from("project_phases")
-    .select("*")
-    .order("sort_order", { ascending: true });
   if (phErr) throw phErr;
 
   const phasesByProject = new Map<string, Phase[]>();
@@ -224,7 +221,7 @@ export async function getProjects(): Promise<Project[]> {
   return (projectRows || []).map((row) =>
     mapProject(row, phasesByProject.get(row.id) || [])
   );
-}
+});
 
 export async function getProject(id: string): Promise<Project | undefined> {
   const { data: row, error } = await supabase
@@ -336,14 +333,14 @@ export async function deleteProject(id: string): Promise<void> {
 
 // === Tasks ===
 
-export async function getTasks(): Promise<Task[]> {
+export const getTasks = cache(async (): Promise<Task[]> => {
   const { data, error } = await supabase
     .from("tasks")
     .select("*")
     .order("created_at", { ascending: false });
   if (error) throw error;
   return (data || []).map(mapTask);
-}
+});
 
 export async function getTask(id: string): Promise<Task | undefined> {
   const { data, error } = await supabase
@@ -411,24 +408,20 @@ export async function deleteTask(id: string): Promise<void> {
 
 // === Finances ===
 
-export async function getFinances(): Promise<Finances> {
-  const { data: revRows, error: rErr } = await supabase
-    .from("revenue")
-    .select("*")
-    .order("date", { ascending: false });
+export const getFinances = cache(async (): Promise<Finances> => {
+  const [{ data: revRows, error: rErr }, { data: expRows, error: eErr }] =
+    await Promise.all([
+      supabase.from("revenue").select("*").order("date", { ascending: false }),
+      supabase.from("expenses").select("*").order("date", { ascending: false }),
+    ]);
   if (rErr) throw rErr;
-
-  const { data: expRows, error: eErr } = await supabase
-    .from("expenses")
-    .select("*")
-    .order("date", { ascending: false });
   if (eErr) throw eErr;
 
   return {
     revenue: (revRows || []).map(mapRevenue),
     expenses: (expRows || []).map(mapExpense),
   };
-}
+});
 
 export async function addRevenue(revenue: Omit<Revenue, "id">): Promise<void> {
   const { error } = await supabase.from("revenue").insert({
@@ -467,14 +460,14 @@ export async function deleteExpense(id: string): Promise<void> {
 
 // === Daily Log ===
 
-export async function getDailyLogs(): Promise<DailyLog[]> {
+export const getDailyLogs = cache(async (): Promise<DailyLog[]> => {
   const { data, error } = await supabase
     .from("daily_log")
     .select("*")
     .order("date", { ascending: false });
   if (error) throw error;
   return (data || []).map(mapDailyLog);
-}
+});
 
 export async function getDailyLog(date: string): Promise<DailyLog | undefined> {
   const { data, error } = await supabase
@@ -502,14 +495,14 @@ export async function upsertDailyLog(log: DailyLog): Promise<void> {
 
 // === Leads ===
 
-export async function getLeads(): Promise<Lead[]> {
+export const getLeads = cache(async (): Promise<Lead[]> => {
   const { data, error } = await supabase
     .from("leads")
     .select("*")
     .order("created_at", { ascending: false });
   if (error) throw error;
   return (data || []).map(mapLead);
-}
+});
 
 export async function getLead(id: string): Promise<Lead | undefined> {
   const { data, error } = await supabase
@@ -567,7 +560,7 @@ export async function deleteLead(id: string): Promise<void> {
 
 // === Config ===
 
-export async function getConfig(): Promise<Config> {
+export const getConfig = cache(async (): Promise<Config> => {
   const { data, error } = await supabase.from("config").select("*");
   if (error) throw error;
 
@@ -581,7 +574,7 @@ export async function getConfig(): Promise<Config> {
     goals: config.goals as Config["goals"],
     workHours: config.workHours as Config["workHours"],
   };
-}
+});
 
 export async function updateConfig(updates: Partial<Config>): Promise<Config> {
   if (updates.owner) {
