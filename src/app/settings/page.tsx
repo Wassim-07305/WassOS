@@ -1,7 +1,7 @@
 import { getConfig } from "@/lib/data";
 import { SettingsView } from "./settings-view";
 
-export default function SettingsPage() {
-  const config = getConfig();
+export default async function SettingsPage() {
+  const config = await getConfig();
   return <SettingsView config={config} />;
 }

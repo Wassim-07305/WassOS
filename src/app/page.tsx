@@ -16,13 +16,15 @@ import {
 import { formatCurrency, formatDateShort, daysUntil, isOverdue, categoryColor, priorityColor } from "@/lib/utils";
 import Link from "next/link";
 
-export default function DashboardPage() {
-  const clients = getClients();
-  const projects = getProjects();
-  const tasks = getTasks();
-  const finances = getFinances();
-  const leads = getLeads();
-  const config = getConfig();
+export default async function DashboardPage() {
+  const [clients, projects, tasks, finances, leads, config] = await Promise.all([
+    getClients(),
+    getProjects(),
+    getTasks(),
+    getFinances(),
+    getLeads(),
+    getConfig(),
+  ]);
 
   const today = new Date().toISOString().split("T")[0];
   const currentMonth = today.slice(0, 7);

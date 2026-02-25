@@ -25,7 +25,7 @@ export async function createClient(formData: FormData) {
     status: "actif" as const,
     notes: (formData.get("notes") as string) || "",
   };
-  data.addClient(client);
+  await data.addClient(client);
   revalidatePath("/clients");
   revalidatePath("/");
 }
@@ -41,13 +41,13 @@ export async function editClient(id: string, formData: FormData) {
     status: formData.get("status") as Client["status"],
     notes: (formData.get("notes") as string) || "",
   };
-  data.updateClient(id, updates);
+  await data.updateClient(id, updates);
   revalidatePath("/clients");
   revalidatePath("/");
 }
 
 export async function removeClient(id: string) {
-  data.deleteClient(id);
+  await data.deleteClient(id);
   revalidatePath("/clients");
   revalidatePath("/");
 }
@@ -81,27 +81,30 @@ export async function createProject(formData: FormData) {
     maintenanceStartDate: null,
     maintenanceEndDate: null,
     maintenancePriceMonthly: Number(formData.get("maintenancePriceMonthly") || 200),
-    phases: [
-      { id: `phase_${Date.now()}_1`, name: "Extraction", status: "à-faire", startDate, endDate: fmt(w1End) },
-      { id: `phase_${Date.now()}_2`, name: "Structuration", status: "à-faire", startDate: fmt(w2Start), endDate: fmt(w2End) },
-      { id: `phase_${Date.now()}_3`, name: "Développement App", status: "à-faire", startDate: fmt(w3Start), endDate: fmt(w3End) },
-      { id: `phase_${Date.now()}_4`, name: "Livraison & Feedback", status: "à-faire", startDate: fmt(w4Start), endDate: fmt(w4End) },
-    ],
+    phases: [],
     tags: ((formData.get("tags") as string) || "").split(",").map((t) => t.trim()).filter(Boolean),
   };
-  data.addProject(project);
+
+  const phases = [
+    { name: "Extraction", status: "à-faire", startDate, endDate: fmt(w1End) },
+    { name: "Structuration", status: "à-faire", startDate: fmt(w2Start), endDate: fmt(w2End) },
+    { name: "Développement App", status: "à-faire", startDate: fmt(w3Start), endDate: fmt(w3End) },
+    { name: "Livraison & Feedback", status: "à-faire", startDate: fmt(w4Start), endDate: fmt(w4End) },
+  ];
+
+  await data.addProject(project, phases);
   revalidatePath("/projects");
   revalidatePath("/");
 }
 
 export async function editProject(id: string, updates: Partial<Project>) {
-  data.updateProject(id, updates);
+  await data.updateProject(id, updates);
   revalidatePath("/projects");
   revalidatePath("/");
 }
 
 export async function removeProject(id: string) {
-  data.deleteProject(id);
+  await data.deleteProject(id);
   revalidatePath("/projects");
   revalidatePath("/");
 }
@@ -122,7 +125,7 @@ export async function createTask(formData: FormData) {
     completedAt: null,
     source: "manuel",
   };
-  data.addTask(task);
+  await data.addTask(task);
   revalidatePath("/tasks");
   revalidatePath("/");
 }
@@ -131,13 +134,13 @@ export async function editTask(id: string, updates: Partial<Task>) {
   if (updates.status === "terminé" && !updates.completedAt) {
     updates.completedAt = new Date().toISOString();
   }
-  data.updateTask(id, updates);
+  await data.updateTask(id, updates);
   revalidatePath("/tasks");
   revalidatePath("/");
 }
 
 export async function removeTask(id: string) {
-  data.deleteTask(id);
+  await data.deleteTask(id);
   revalidatePath("/tasks");
   revalidatePath("/");
 }
@@ -156,19 +159,19 @@ export async function createLead(formData: FormData) {
     estimatedValue: Number(formData.get("estimatedValue") || 4000),
     tags: ((formData.get("tags") as string) || "").split(",").map((t) => t.trim()).filter(Boolean),
   };
-  data.addLead(lead);
+  await data.addLead(lead);
   revalidatePath("/leads");
   revalidatePath("/");
 }
 
 export async function editLead(id: string, updates: Partial<Lead>) {
-  data.updateLead(id, updates);
+  await data.updateLead(id, updates);
   revalidatePath("/leads");
   revalidatePath("/");
 }
 
 export async function removeLead(id: string) {
-  data.deleteLead(id);
+  await data.deleteLead(id);
   revalidatePath("/leads");
   revalidatePath("/");
 }
@@ -182,7 +185,7 @@ export async function createRevenue(formData: FormData) {
     date: formData.get("date") as string,
     method: formData.get("method") as Revenue["method"],
   };
-  data.addRevenue(revenue);
+  await data.addRevenue(revenue);
   revalidatePath("/finances");
   revalidatePath("/");
 }
@@ -196,31 +199,31 @@ export async function createExpense(formData: FormData) {
     recurring: formData.get("recurring") === "true",
     recurringFrequency: (formData.get("recurringFrequency") as Expense["recurringFrequency"]) || undefined,
   };
-  data.addExpense(expense);
+  await data.addExpense(expense);
   revalidatePath("/finances");
   revalidatePath("/");
 }
 
 export async function removeRevenue(id: string) {
-  data.deleteRevenue(id);
+  await data.deleteRevenue(id);
   revalidatePath("/finances");
 }
 
 export async function removeExpense(id: string) {
-  data.deleteExpense(id);
+  await data.deleteExpense(id);
   revalidatePath("/finances");
 }
 
 // === Daily Log Actions ===
 export async function saveDailyLog(log: DailyLog) {
-  data.upsertDailyLog(log);
+  await data.upsertDailyLog(log);
   revalidatePath("/daily");
   revalidatePath("/");
 }
 
 // === Config Actions ===
 export async function saveConfig(updates: Partial<Config>) {
-  data.updateConfig(updates);
+  await data.updateConfig(updates);
   revalidatePath("/settings");
   revalidatePath("/");
 }

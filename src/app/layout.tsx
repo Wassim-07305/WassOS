@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 
 export const dynamic = "force-dynamic";
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const tasks = getTasks();
-  const finances = getFinances();
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const tasks = await getTasks();
+  const finances = await getFinances();
 
   const today = new Date().toISOString().split("T")[0];
   const overdueTasks = tasks.filter(

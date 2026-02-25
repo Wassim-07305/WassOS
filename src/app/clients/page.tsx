@@ -1,10 +1,12 @@
 import { getClients, getProjects, getFinances } from "@/lib/data";
 import { ClientsList } from "./clients-list";
 
-export default function ClientsPage() {
-  const clients = getClients();
-  const projects = getProjects();
-  const finances = getFinances();
+export default async function ClientsPage() {
+  const [clients, projects, finances] = await Promise.all([
+    getClients(),
+    getProjects(),
+    getFinances(),
+  ]);
 
   const clientsWithData = clients.map((client) => {
     const clientProjects = projects.filter((p) => p.clientId === client.id);
