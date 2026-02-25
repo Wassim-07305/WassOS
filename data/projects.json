@@ -1,0 +1,247 @@
+[
+  {
+    "id": "proj_001",
+    "clientId": "client_001",
+    "name": "App Boss Coaching",
+    "description": "Application mobile de suivi coaching avec programmes personnalisés et messagerie intégrée",
+    "status": "en-cours",
+    "priority": "haute",
+    "price": 4000,
+    "paidAmount": 2000,
+    "paymentStatus": "acompte-reçu",
+    "startDate": "2025-02-01",
+    "estimatedEndDate": "2025-03-01",
+    "actualEndDate": null,
+    "maintenanceStartDate": null,
+    "maintenanceEndDate": null,
+    "maintenancePriceMonthly": 200,
+    "phases": [
+      {
+        "id": "phase_001",
+        "name": "Extraction",
+        "status": "terminé",
+        "startDate": "2025-02-01",
+        "endDate": "2025-02-07"
+      },
+      {
+        "id": "phase_002",
+        "name": "Structuration",
+        "status": "terminé",
+        "startDate": "2025-02-08",
+        "endDate": "2025-02-14"
+      },
+      {
+        "id": "phase_003",
+        "name": "Développement App",
+        "status": "en-cours",
+        "startDate": "2025-02-15",
+        "endDate": "2025-02-25"
+      },
+      {
+        "id": "phase_004",
+        "name": "Livraison & Feedback",
+        "status": "à-faire",
+        "startDate": "2025-02-26",
+        "endDate": "2025-03-01"
+      }
+    ],
+    "tags": ["coaching", "mobile", "ESA"],
+    "createdAt": "2025-01-20T00:00:00Z"
+  },
+  {
+    "id": "proj_002",
+    "clientId": "client_002",
+    "name": "App Reynaud Formation",
+    "description": "Application de formation en ligne avec vidéos, quiz et certificats",
+    "status": "en-cours",
+    "priority": "haute",
+    "price": 4000,
+    "paidAmount": 2000,
+    "paymentStatus": "acompte-reçu",
+    "startDate": "2025-02-10",
+    "estimatedEndDate": "2025-03-10",
+    "actualEndDate": null,
+    "maintenanceStartDate": null,
+    "maintenanceEndDate": null,
+    "maintenancePriceMonthly": 200,
+    "phases": [
+      {
+        "id": "phase_005",
+        "name": "Extraction",
+        "status": "terminé",
+        "startDate": "2025-02-10",
+        "endDate": "2025-02-16"
+      },
+      {
+        "id": "phase_006",
+        "name": "Structuration",
+        "status": "en-cours",
+        "startDate": "2025-02-17",
+        "endDate": "2025-02-23"
+      },
+      {
+        "id": "phase_007",
+        "name": "Développement App",
+        "status": "à-faire",
+        "startDate": "2025-02-24",
+        "endDate": "2025-03-05"
+      },
+      {
+        "id": "phase_008",
+        "name": "Livraison & Feedback",
+        "status": "à-faire",
+        "startDate": "2025-03-06",
+        "endDate": "2025-03-10"
+      }
+    ],
+    "tags": ["formation", "e-learning", "ESA"],
+    "createdAt": "2025-02-05T00:00:00Z"
+  },
+  {
+    "id": "proj_003",
+    "clientId": "client_003",
+    "name": "App Alanu Consulting",
+    "description": "Application de consulting avec booking de sessions et suivi client",
+    "status": "à-faire",
+    "priority": "moyenne",
+    "price": 4000,
+    "paidAmount": 0,
+    "paymentStatus": "en-attente",
+    "startDate": "2025-03-01",
+    "estimatedEndDate": "2025-03-29",
+    "actualEndDate": null,
+    "maintenanceStartDate": null,
+    "maintenanceEndDate": null,
+    "maintenancePriceMonthly": 200,
+    "phases": [
+      {
+        "id": "phase_009",
+        "name": "Extraction",
+        "status": "à-faire",
+        "startDate": "2025-03-01",
+        "endDate": "2025-03-07"
+      },
+      {
+        "id": "phase_010",
+        "name": "Structuration",
+        "status": "à-faire",
+        "startDate": "2025-03-08",
+        "endDate": "2025-03-14"
+      },
+      {
+        "id": "phase_011",
+        "name": "Développement App",
+        "status": "à-faire",
+        "startDate": "2025-03-15",
+        "endDate": "2025-03-25"
+      },
+      {
+        "id": "phase_012",
+        "name": "Livraison & Feedback",
+        "status": "à-faire",
+        "startDate": "2025-03-26",
+        "endDate": "2025-03-29"
+      }
+    ],
+    "tags": ["consulting", "booking", "ESA"],
+    "createdAt": "2025-02-15T00:00:00Z"
+  },
+  {
+    "id": "proj_004",
+    "clientId": "client_004",
+    "name": "App Fortin Fitness",
+    "description": "Application de suivi fitness avec programmes d'entraînement et nutrition",
+    "status": "maintenance",
+    "priority": "basse",
+    "price": 4000,
+    "paidAmount": 4000,
+    "paymentStatus": "payé",
+    "startDate": "2024-11-15",
+    "estimatedEndDate": "2024-12-15",
+    "actualEndDate": "2024-12-12",
+    "maintenanceStartDate": "2025-01-01",
+    "maintenanceEndDate": "2025-06-30",
+    "maintenancePriceMonthly": 200,
+    "phases": [
+      {
+        "id": "phase_013",
+        "name": "Extraction",
+        "status": "terminé",
+        "startDate": "2024-11-15",
+        "endDate": "2024-11-21"
+      },
+      {
+        "id": "phase_014",
+        "name": "Structuration",
+        "status": "terminé",
+        "startDate": "2024-11-22",
+        "endDate": "2024-11-28"
+      },
+      {
+        "id": "phase_015",
+        "name": "Développement App",
+        "status": "terminé",
+        "startDate": "2024-11-29",
+        "endDate": "2024-12-09"
+      },
+      {
+        "id": "phase_016",
+        "name": "Livraison & Feedback",
+        "status": "terminé",
+        "startDate": "2024-12-10",
+        "endDate": "2024-12-12"
+      }
+    ],
+    "tags": ["fitness", "nutrition", "ESA"],
+    "createdAt": "2024-11-10T00:00:00Z"
+  },
+  {
+    "id": "proj_005",
+    "clientId": "client_005",
+    "name": "App Durand Coaching",
+    "description": "Application de business coaching avec mastermind groups et contenu exclusif",
+    "status": "en-cours",
+    "priority": "haute",
+    "price": 4000,
+    "paidAmount": 4000,
+    "paymentStatus": "payé",
+    "startDate": "2025-01-20",
+    "estimatedEndDate": "2025-02-17",
+    "actualEndDate": null,
+    "maintenanceStartDate": null,
+    "maintenanceEndDate": null,
+    "maintenancePriceMonthly": 200,
+    "phases": [
+      {
+        "id": "phase_017",
+        "name": "Extraction",
+        "status": "terminé",
+        "startDate": "2025-01-20",
+        "endDate": "2025-01-26"
+      },
+      {
+        "id": "phase_018",
+        "name": "Structuration",
+        "status": "terminé",
+        "startDate": "2025-01-27",
+        "endDate": "2025-02-02"
+      },
+      {
+        "id": "phase_019",
+        "name": "Développement App",
+        "status": "terminé",
+        "startDate": "2025-02-03",
+        "endDate": "2025-02-13"
+      },
+      {
+        "id": "phase_020",
+        "name": "Livraison & Feedback",
+        "status": "en-cours",
+        "startDate": "2025-02-14",
+        "endDate": "2025-02-17"
+      }
+    ],
+    "tags": ["coaching", "mastermind", "ESA"],
+    "createdAt": "2025-01-15T00:00:00Z"
+  }
+]

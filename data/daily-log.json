@@ -1,0 +1,33 @@
+[
+  {
+    "date": "2025-02-25",
+    "morningPlan": [
+      "9h-10h : Call client Steven Boss — point dev app",
+      "10h-12h : Dev écrans onboarding App Boss Coaching",
+      "14h-15h30 : Structuration modules avec Damien Reynaud",
+      "15h30-16h30 : Préparer livraison App Durand Coaching",
+      "16h30-17h30 : Prospection LinkedIn (20 messages)",
+      "17h30-18h : Review journée + planning demain"
+    ],
+    "eveningReview": null,
+    "coworkInsights": null
+  },
+  {
+    "date": "2025-02-24",
+    "morningPlan": [
+      "9h-10h : Review code App Boss Coaching",
+      "10h-12h30 : Dev système de programmes coaching",
+      "14h-16h : Dev App Boss Coaching — écrans profil",
+      "16h-17h : Rédiger post LinkedIn méthode ESA",
+      "17h-18h : Prospection LinkedIn (20 messages)"
+    ],
+    "eveningReview": {
+      "completed": ["Review code", "Dev programmes coaching", "Dev écrans profil"],
+      "notCompleted": ["Post LinkedIn", "Prospection LinkedIn"],
+      "blockers": "Le dev a pris plus de temps que prévu, pas eu le temps pour le contenu et la prospection",
+      "mood": 6,
+      "lessonsLearned": "Mettre la prospection et le contenu en premier le matin quand l'énergie est là"
+    },
+    "coworkInsights": "Tu as tendance à repousser la prospection. Essaie de la placer en premier créneau demain matin. La prospection nourrit le pipeline et c'est ce qui fait tourner le business."
+  }
+]

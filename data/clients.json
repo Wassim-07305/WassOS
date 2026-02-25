@@ -1,0 +1,62 @@
+[
+  {
+    "id": "client_001",
+    "name": "Steven Boss",
+    "email": "steven@bosscoaching.com",
+    "phone": "+33 6 12 34 56 78",
+    "company": "Boss Coaching",
+    "niche": "Business coaching",
+    "source": "LinkedIn",
+    "status": "actif",
+    "notes": "Très réactif, préfère les calls le matin. Gère une communauté de 500+ entrepreneurs.",
+    "createdAt": "2025-01-15T00:00:00Z"
+  },
+  {
+    "id": "client_002",
+    "name": "Damien Reynaud",
+    "email": "damien@reynaudformation.fr",
+    "phone": "+33 6 23 45 67 89",
+    "company": "Reynaud Formation",
+    "niche": "Formation en ligne",
+    "source": "Recommandation",
+    "status": "actif",
+    "notes": "A besoin de vidéos Loom pour chaque livraison. Très orienté détails.",
+    "createdAt": "2025-01-20T00:00:00Z"
+  },
+  {
+    "id": "client_003",
+    "name": "Alexis Alanu",
+    "email": "alexis@alanuconsulting.com",
+    "phone": "+33 6 34 56 78 90",
+    "company": "Alanu Consulting",
+    "niche": "Consulting stratégique",
+    "source": "LinkedIn",
+    "status": "actif",
+    "notes": "Nouveau client, très motivé. Veut lancer son app le plus vite possible.",
+    "createdAt": "2025-02-01T00:00:00Z"
+  },
+  {
+    "id": "client_004",
+    "name": "Timothée Fortin",
+    "email": "timothee@fortinfitness.com",
+    "phone": "+33 6 45 67 89 01",
+    "company": "Fortin Fitness",
+    "niche": "Fitness coaching",
+    "source": "Instagram",
+    "status": "actif",
+    "notes": "App livrée, en phase de maintenance. Très content du résultat, bon potentiel de referral.",
+    "createdAt": "2024-11-10T00:00:00Z"
+  },
+  {
+    "id": "client_005",
+    "name": "Mathieu Durand",
+    "email": "mathieu@durandcoaching.fr",
+    "phone": "+33 6 56 78 90 12",
+    "company": "Durand Business Coaching",
+    "niche": "Business coaching",
+    "source": "Bouche à oreille",
+    "status": "actif",
+    "notes": "Projet en phase de livraison. A une grosse audience sur YouTube (50k abonnés).",
+    "createdAt": "2025-01-05T00:00:00Z"
+  }
+]

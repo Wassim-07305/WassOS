@@ -1,0 +1,123 @@
+{
+  "revenue": [
+    {
+      "id": "rev_001",
+      "projectId": "proj_001",
+      "amount": 2000,
+      "type": "acompte",
+      "date": "2025-02-01",
+      "method": "virement"
+    },
+    {
+      "id": "rev_002",
+      "projectId": "proj_002",
+      "amount": 2000,
+      "type": "acompte",
+      "date": "2025-02-10",
+      "method": "virement"
+    },
+    {
+      "id": "rev_003",
+      "projectId": "proj_005",
+      "amount": 2000,
+      "type": "acompte",
+      "date": "2025-01-20",
+      "method": "virement"
+    },
+    {
+      "id": "rev_004",
+      "projectId": "proj_005",
+      "amount": 2000,
+      "type": "paiement-final",
+      "date": "2025-02-14",
+      "method": "virement"
+    },
+    {
+      "id": "rev_005",
+      "projectId": "proj_004",
+      "amount": 200,
+      "type": "maintenance",
+      "date": "2025-02-01",
+      "method": "virement"
+    },
+    {
+      "id": "rev_006",
+      "projectId": "proj_004",
+      "amount": 200,
+      "type": "maintenance",
+      "date": "2025-01-01",
+      "method": "virement"
+    },
+    {
+      "id": "rev_007",
+      "projectId": "proj_004",
+      "amount": 2000,
+      "type": "acompte",
+      "date": "2024-11-15",
+      "method": "virement"
+    },
+    {
+      "id": "rev_008",
+      "projectId": "proj_004",
+      "amount": 2000,
+      "type": "paiement-final",
+      "date": "2024-12-12",
+      "method": "virement"
+    }
+  ],
+  "expenses": [
+    {
+      "id": "exp_001",
+      "label": "Abonnement Claude Max",
+      "amount": 180,
+      "category": "outils",
+      "date": "2025-02-01",
+      "recurring": true,
+      "recurringFrequency": "mensuel"
+    },
+    {
+      "id": "exp_002",
+      "label": "Abonnement Cursor Pro",
+      "amount": 20,
+      "category": "outils",
+      "date": "2025-02-01",
+      "recurring": true,
+      "recurringFrequency": "mensuel"
+    },
+    {
+      "id": "exp_003",
+      "label": "Abonnement Figma",
+      "amount": 12,
+      "category": "outils",
+      "date": "2025-02-01",
+      "recurring": true,
+      "recurringFrequency": "mensuel"
+    },
+    {
+      "id": "exp_004",
+      "label": "Abonnement Expo / EAS",
+      "amount": 29,
+      "category": "outils",
+      "date": "2025-02-01",
+      "recurring": true,
+      "recurringFrequency": "mensuel"
+    },
+    {
+      "id": "exp_005",
+      "label": "Coworking Marseille",
+      "amount": 200,
+      "category": "bureau",
+      "date": "2025-02-01",
+      "recurring": true,
+      "recurringFrequency": "mensuel"
+    },
+    {
+      "id": "exp_006",
+      "label": "Formation React Native avancé",
+      "amount": 150,
+      "category": "formation",
+      "date": "2025-02-15",
+      "recurring": false
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "lead_001",
+    "name": "Jean-Pierre Martin",
+    "email": "jp.martin@coachpro.fr",
+    "phone": null,
+    "source": "LinkedIn",
+    "status": "premier-contact",
+    "lastContactDate": "2025-02-20",
+    "nextFollowUpDate": "2025-02-27",
+    "notes": "Coach business avec 200 clients actifs. Intéressé par une app pour gérer ses programmes. Budget ok.",
+    "estimatedValue": 4000,
+    "tags": ["coach", "chaud"],
+    "createdAt": "2025-02-18T00:00:00Z"
+  },
+  {
+    "id": "lead_002",
+    "name": "Sophie Leclerc",
+    "email": "sophie@leclerc-coaching.com",
+    "phone": "+33 6 98 76 54 32",
+    "source": "Instagram",
+    "status": "call-planifié",
+    "lastContactDate": "2025-02-22",
+    "nextFollowUpDate": "2025-02-26",
+    "notes": "Coach en développement personnel, 15k followers Instagram. Call prévu mercredi 26 à 14h.",
+    "estimatedValue": 4000,
+    "tags": ["coach", "chaud", "instagram"],
+    "createdAt": "2025-02-19T00:00:00Z"
+  },
+  {
+    "id": "lead_003",
+    "name": "Marc Dubois",
+    "email": "marc@dubois-consulting.fr",
+    "phone": null,
+    "source": "LinkedIn",
+    "status": "proposition-envoyée",
+    "lastContactDate": "2025-02-18",
+    "nextFollowUpDate": "2025-02-25",
+    "notes": "Consultant en management. Proposition envoyée à 4500€ (app + formation). Attend retour.",
+    "estimatedValue": 4500,
+    "tags": ["consultant", "tiède"],
+    "createdAt": "2025-02-10T00:00:00Z"
+  },
+  {
+    "id": "lead_004",
+    "name": "Émilie Rousseau",
+    "email": "emilie@rousseau-yoga.fr",
+    "phone": "+33 6 11 22 33 44",
+    "source": "Bouche à oreille",
+    "status": "nouveau",
+    "lastContactDate": null,
+    "nextFollowUpDate": "2025-02-26",
+    "notes": "Prof de yoga recommandée par Timothée Fortin. 300 élèves, cherche une app de booking.",
+    "estimatedValue": 4000,
+    "tags": ["yoga", "referral", "chaud"],
+    "createdAt": "2025-02-24T00:00:00Z"
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "owner": {
+    "name": "Wass",
+    "business": "Développeur d'applications pour coaches",
+    "method": "ESA (Extract, Structure, App)",
+    "basePrice": 4000,
+    "deliveryWeeks": 4,
+    "location": "Marseille"
+  },
+  "goals": {
+    "monthlyRevenueTarget": 10000,
+    "weeklyProspectingMessages": 100,
+    "weeklyContentPieces": 3,
+    "maxActiveProjects": 5
+  },
+  "workHours": {
+    "start": "09:00",
+    "end": "18:00",
+    "breakStart": "12:30",
+    "breakEnd": "14:00"
+  }
+}
