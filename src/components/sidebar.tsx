@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 import {
   LayoutDashboard,
   Users,
@@ -12,7 +13,6 @@ import {
   Wallet,
   BookOpen,
   Settings,
-  Zap,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -40,9 +40,7 @@ export function Sidebar({ overdueTasks, monthlyRevenue }: SidebarProps) {
     <aside className="fixed left-0 top-0 z-40 h-screen w-60 border-r border-border bg-card flex flex-col">
       {/* Logo */}
       <div className="flex items-center gap-2 px-6 py-5 border-b border-border">
-        <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary/20">
-          <Zap className="w-4 h-4 text-primary" />
-        </div>
+        <Image src="/logo.png" alt="WassOS" width={32} height={32} className="rounded-lg" />
         <span className="text-lg font-bold tracking-tight">WassOS</span>
       </div>
 

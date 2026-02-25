@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Suspense } from "react";
 import "./globals.css";
 import { Sidebar } from "@/components/sidebar";
@@ -8,6 +8,17 @@ import { CommandPaletteLoader } from "@/components/command-palette-loader";
 export const metadata: Metadata = {
   title: "WassOS — Business Dashboard",
   description: "Application de gestion business tout-en-un",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "WassOS",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0a0a0a",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export const revalidate = 60;

@@ -42,6 +42,12 @@ next-env.d.ts
 # screenshots
 *.png
 *.jpg
+# allow app icons
+!public/logo.png
+!public/icon-192.png
+!public/icon-512.png
+!src/app/icon.png
+!src/app/apple-icon.png
 
 # playwright
 .playwright-mcp/
